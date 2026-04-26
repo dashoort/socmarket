@@ -24,6 +24,7 @@ app.use(express.json());
 app.use(express.static('uploads'));
 
 app.use('/uploads', express.static('uploads'));
+app.use(express.static(path.join(__dirname, '../client/build')));
 app.use(session({
   secret: 'your-secret-key-change-in-production',
   resave: false,
@@ -434,6 +435,11 @@ const userRoutes = require('./routes/users');
 app.use('/api/wishlist', wishlistRoutes(db));
 app.use('/api/purchases', purchaseRoutes(db));
 app.use('/api/users', userRoutes(db));
+
+// Все остальные запросы отдаём React
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
