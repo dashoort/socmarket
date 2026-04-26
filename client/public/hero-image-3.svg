@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="icon3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f3e8ff"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1200" height="600" fill="url(#bg3)"/>
+  
+  <!-- Futuristic grid -->
+  <g stroke="url(#icon3)" stroke-width="1" opacity="0.2">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="500" x2="1200" y2="500"/>
+    
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="600" y1="0" x2="600" y2="600"/>
+    <line x1="800" y1="0" x2="800" y2="600"/>
+    <line x1="1000" y1="0" x2="1000" y2="600"/>
+  </g>
+  
+  <!-- Glowing orbs -->
+  <circle cx="300" cy="150" r="30" fill="url(#icon3)" opacity="0.6">
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="900" cy="350" r="25" fill="url(#icon3)" opacity="0.6">
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Tech devices -->
+  <g fill="url(#icon3)" opacity="0.9">
+    <!-- Headphones -->
+    <ellipse cx="150" cy="400" rx="25" ry="15"/>
+    <ellipse cx="250" cy="400" rx="25" ry="15"/>
+    <rect x="175" y="400" width="50" height="8" rx="4"/>
+    
+    <!-- Camera -->
+    <rect x="750" y="200" width="80" height="60" rx="8"/>
+    <circle cx="790" cy="230" r="20"/>
+    <rect x="770" y="210" width="40" height="8" rx="4"/>
+  </g>
+  
+  <!-- Abstract elements -->
+  <path d="M 500 100 Q 600 50 700 100 T 900 100" stroke="url(#icon3)" stroke-width="3" fill="none" opacity="0.4"/>
+  <path d="M 500 500 Q 600 550 700 500 T 900 500" stroke="url(#icon3)" stroke-width="3" fill="none" opacity="0.4"/>
+</svg> 
