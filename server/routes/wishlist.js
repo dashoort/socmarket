@@ -9,12 +9,14 @@ module.exports = (db) => {
         const user_id = req.session.userId;
         if (!user_id) return res.status(401).json({ error: 'Не авторизован' });
 
+        // СТАЛО:
         db.run(
             `INSERT OR IGNORE INTO wishlists (user_id, listing_id) VALUES (?, ?)`,
             [user_id, listing_id],
             function(err) {
                 if (err) return res.status(500).json({ error: err.message });
-                res.json({ success: true });
+                // Возвращаем listing_id чтобы slice мог обновить состояние
+                res.json({ success: true, listing_id: Number(listing_id) });
             }
         );
     });

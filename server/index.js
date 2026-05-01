@@ -14,10 +14,25 @@ const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-// Middleware
-app.use(helmet());
+// СТАЛО:
+const isProduction = process.env.NODE_ENV === 'production';
+const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:3000';
+const WS_URL = process.env.WS_URL || 'ws://localhost:5000';
+
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      connectSrc: ["'self'", WS_URL, CLIENT_URL],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", "data:", "blob:"],
+    },
+  },
+}));
+
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: isProduction ? CLIENT_URL : 'http://localhost:3000',
   credentials: true
 }));
 app.use(express.json());

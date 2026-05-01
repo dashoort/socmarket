@@ -42,7 +42,9 @@ const Chat = () => {
 
   useEffect(() => {
     if (user) {
-      const wsUrl = `ws://localhost:5000?userId=${user.id}`;
+      const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const wsHost = process.env.REACT_APP_WS_URL || window.location.host;
+      const wsUrl = `${wsProtocol}//${wsHost}?userId=${user.id}`;
       const websocket = new WebSocket(wsUrl);
 
       websocket.onopen = () => {
